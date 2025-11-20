@@ -42,34 +42,30 @@
   <h2 class="text-success">Submit Success!</h2>
   <p>
 Thank you for registering for the Medical Check-Up.</p>
-
+<p><strong>Name:</strong> <span id="nameField"></span></p>
+<p><strong>Email:</strong> <span id="emailField"></span></p>
+<p><strong>Pilihan Paket:</strong> <span id="pilihanField"></span></p>
   <hr>
 
 
 
 </div>
 
-<script>
-  document.getElementById("notifForm").addEventListener("submit", function(e) {
-    e.preventDefault();
 
-    const catatan = document.getElementById("catatan").value.trim();
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
 
-    if (catatan === "") {
-      document.getElementById("msg").innerHTML = "Catatan tidak boleh kosong.";
-      document.getElementById("msg").style.color = "red";
-      return;
-    }
+  const name = urlParams.get("name");
+  const email = urlParams.get("email");
+  const pilihan = urlParams.get("pilihan");
 
-    // Kamu bisa kirim catatan ke Google Sheets jika mau
-    console.log("Catatan user:", catatan);
-
-    document.getElementById("msg").innerHTML = "Catatan berhasil dikirim!";
-    document.getElementById("msg").style.color = "green";
-
-    document.getElementById("catatan").value = "";
-  });
+  document.getElementById("nameField").innerText = name;
+  document.getElementById("emailField").innerText = email;
+  document.getElementById("pilihanField").innerText = pilihan;
 </script>
+
+
 
 </body>
 </html>
+
